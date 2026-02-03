@@ -24,7 +24,7 @@ jobs:
         run: |
           npx newman run petstore.collection.json \
             -r html \
-            --reporter-html-export report.html || true
+            --reporter-html-export index.html || true
 
       - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
