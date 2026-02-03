@@ -1,0 +1,33 @@
+name: Newman API Tests
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  newman:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Newman tests (allow failures)
+        run: |
+          npx newman run petstore.collection.json \
+            -r html \
+            --reporter-html-export report.html || true
+
+      - name: Deploy report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
