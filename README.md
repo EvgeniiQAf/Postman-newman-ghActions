@@ -52,3 +52,12 @@ Examples with different actions in Postman workspace (only take a look once, no 
 
 Doc for json schema validation, to check output API response (only take a look once, no need to learn this doc) 
 - <a href="https://json-schema.org"> json schema docs </a>
+## CI / CD
+
+This project runs API tests using **Postman + Newman** in **GitHub Actions**.
+
+### How to run locally
+```bash
+npm install
+npx newman run petstore.collection.json -r html --reporter-html-export report.html
+
