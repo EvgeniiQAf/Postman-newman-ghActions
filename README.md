@@ -61,3 +61,12 @@ This project runs API tests using **Postman + Newman** in **GitHub Actions**.
 npm install
 npx newman run petstore.collection.json -r html --reporter-html-export report.html
 
+## CI / CD
+
+API tests are implemented in Postman and executed via Newman.
+
+Tests are automatically executed in GitHub Actions pipeline.
+
+## Test Report
+Newman HTML report is published to GitHub Pages:
+https://evgeniiqaf.github.io/Postman-newman-ghActions/
