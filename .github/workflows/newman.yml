@@ -24,7 +24,8 @@ jobs:
       - name: Run Newman tests (allow failures)
         run: |
           mkdir -p newman
-          newman run store_api_tests.postman_collection.json \
+          npx newman run store_api_tests.postman_collection.json \
+            -e local.postman_environment.json \
             -r html \
             --reporter-html-export newman/index.html || true
 
