@@ -70,3 +70,14 @@ Tests are automatically executed in GitHub Actions pipeline.
 ## Test Report
 Newman HTML report is published to GitHub Pages:
 https://evgeniiqaf.github.io/Postman-newman-ghActions/
+## Store API tests
+
+### Covered
+- Smoke tests
+- CRUD flow
+- Negative cases
+
+### Known API issues
+- Filter by price does not work
+- Sort by price does not work
+- Invalid id returns 200
