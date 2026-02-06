@@ -17,22 +17,20 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install Newman and HTML reporter
+        run: |
+          npm install -g newman newman-reporter-html
 
       - name: Run Newman tests (allow failures)
         run: |
           mkdir -p newman
-          npx newman run store_api_tests.postman_collection.json \
+          newman run store_api_tests.postman_collection.json \
             -r html \
             --reporter-html-export newman/index.html || true
 
-      - name: Debug Newman output
+      - name: Verify report exists
         run: |
-          echo "=== workspace ==="
-          ls -la
-          echo "=== newman dir ==="
-          ls -la newman || true
+          ls -la newman
 
       - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
