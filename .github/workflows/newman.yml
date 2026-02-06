@@ -27,6 +27,13 @@ jobs:
             -r html \
             --reporter-html-export newman/index.html || true
 
+      - name: Debug Newman output
+        run: |
+          echo "=== workspace ==="
+          ls -la
+          echo "=== newman dir ==="
+          ls -la newman || true
+
       - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
